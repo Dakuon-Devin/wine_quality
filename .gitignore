@@ -175,3 +175,7 @@ data/
 *.csv
 *.names
 *.zip
+
+# Analysis results
+results/
+results/figures/
