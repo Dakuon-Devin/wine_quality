@@ -2,11 +2,12 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import japanize_matplotlib
 from pathlib import Path
+import matplotlib.font_manager as fm
 
 # 高品質な出力設定
 plt.rcParams['figure.dpi'] = 300
+plt.rcParams['font.family'] = 'IPAexGothic'
 plt.style.use('default')
 sns.set_palette("viridis")
 

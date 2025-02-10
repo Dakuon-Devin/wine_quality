@@ -5,12 +5,12 @@ description = "Wine Quality Dataset Analysis"
 authors = ["Devin <devin@example.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.11"
 pandas = "^2.2.0"
 numpy = "^1.26.0"
 matplotlib = "^3.8.0"
 seaborn = "^0.13.0"
-japanize-matplotlib = "^1.1.3"
+
 scipy = "^1.12.0"
 
 [build-system]
