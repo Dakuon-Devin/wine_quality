@@ -169,3 +169,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Wine Quality Dataset files
+data/
+*.csv
+*.names
+*.zip
