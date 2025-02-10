@@ -7,7 +7,10 @@ import matplotlib.font_manager as fm
 
 # 高品質な出力設定
 plt.rcParams['figure.dpi'] = 300
-plt.rcParams['font.family'] = 'IPAexGothic'
+plt.rcParams['font.family'] = ['IPAexGothic']
+plt.rcParams['pdf.fonttype'] = 42
+plt.rcParams['ps.fonttype'] = 42
+plt.rcParams['svg.fonttype'] = 'none'
 plt.style.use('default')
 sns.set_palette("viridis")
 

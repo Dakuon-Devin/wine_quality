@@ -3,14 +3,8 @@
 UCIのワイン品質データセットを使用した分析プロジェクト。
 
 ## 引用
-このデータセットを使用する場合は、以下の論文を引用してください：
+このデータセットを使用する場合は、以下を引用してください：
 
-### 論文の引用
-P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. 
-Modeling wine preferences by data mining from physicochemical properties.
-In Decision Support Systems, Elsevier, 47(4):547-553, 2009.
-
-### データセットの引用
 Cortez, P., Cerdeira, A., Almeida, F., Matos, T., & Reis, J. (2009). 
 Wine Quality [Dataset]. UCI Machine Learning Repository. 
 https://doi.org/10.24432/C56S3T
