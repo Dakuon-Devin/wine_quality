@@ -5,12 +5,16 @@ import seaborn as sns
 from pathlib import Path
 import matplotlib.font_manager as fm
 
+# フォント設定
+font_path = '/usr/share/fonts/opentype/ipafont-gothic/ipag.ttf'
+plt.rcParams['font.family'] = 'IPAGothic'
+fm.fontManager.addfont(font_path)
+plt.rcParams['font.sans-serif'] = ['IPAGothic']
+plt.rcParams['axes.unicode_minus'] = False
+
 # 高品質な出力設定
 plt.rcParams['figure.dpi'] = 300
-plt.rcParams['font.family'] = ['IPAexGothic']
-plt.rcParams['pdf.fonttype'] = 42
-plt.rcParams['ps.fonttype'] = 42
-plt.rcParams['svg.fonttype'] = 'none'
+plt.rcParams['savefig.dpi'] = 300
 plt.style.use('default')
 sns.set_palette("viridis")
 
@@ -34,10 +38,12 @@ def analyze_basic_stats(red_wine: pd.DataFrame, white_wine: pd.DataFrame, result
             white_wine[feature]
         ]
         plt.boxplot(data)
-        plt.xticks([1, 2], ['赤ワイン', '白ワイン'])
-        plt.title(f'{feature}の分布比較')
-        plt.ylabel(feature)
-        plt.savefig(results_dir / f'boxplot_{feature}.png', bbox_inches='tight')
+        plt.xticks([1, 2], ['赤ワイン', '白ワイン'], fontfamily='IPAGothic')
+        plt.title(f'{feature}の分布比較', fontfamily='IPAGothic')
+        plt.ylabel(feature, fontfamily='IPAGothic')
+        plt.savefig(results_dir / f'boxplot_{feature}.png', 
+                   bbox_inches='tight',
+                   pad_inches=0.1)
         plt.close()
 
 def analyze_quality_distribution(red_wine: pd.DataFrame, white_wine: pd.DataFrame, results_dir: Path):
@@ -47,18 +53,20 @@ def analyze_quality_distribution(red_wine: pd.DataFrame, white_wine: pd.DataFram
     # 品質スコアの分布
     plt.subplot(1, 2, 1)
     sns.histplot(data=red_wine, x='quality', bins=10)
-    plt.title('赤ワインの品質分布')
-    plt.xlabel('品質スコア')
-    plt.ylabel('頻度')
+    plt.title('赤ワインの品質分布', fontfamily='IPAGothic')
+    plt.xlabel('品質スコア', fontfamily='IPAGothic')
+    plt.ylabel('頻度', fontfamily='IPAGothic')
     
     plt.subplot(1, 2, 2)
     sns.histplot(data=white_wine, x='quality', bins=10)
-    plt.title('白ワインの品質分布')
-    plt.xlabel('品質スコア')
-    plt.ylabel('頻度')
+    plt.title('白ワインの品質分布', fontfamily='IPAGothic')
+    plt.xlabel('品質スコア', fontfamily='IPAGothic')
+    plt.ylabel('頻度', fontfamily='IPAGothic')
     
     plt.tight_layout()
-    plt.savefig(results_dir / 'quality_distribution.png', bbox_inches='tight')
+    plt.savefig(results_dir / 'quality_distribution.png', 
+                bbox_inches='tight',
+                pad_inches=0.1)
     plt.close()
 
 def analyze_correlations(red_wine: pd.DataFrame, white_wine: pd.DataFrame, results_dir: Path):
@@ -66,15 +74,19 @@ def analyze_correlations(red_wine: pd.DataFrame, white_wine: pd.DataFrame, resul
     # 赤ワインの相関マトリックス
     plt.figure(figsize=(12, 10))
     sns.heatmap(red_wine.corr(), annot=True, cmap='viridis', fmt='.2f')
-    plt.title('赤ワインの相関マトリックス')
-    plt.savefig(results_dir / 'red_wine_correlation.png', bbox_inches='tight')
+    plt.title('赤ワインの相関マトリックス', fontfamily='IPAGothic')
+    plt.savefig(results_dir / 'red_wine_correlation.png', 
+                bbox_inches='tight',
+                pad_inches=0.1)
     plt.close()
     
     # 白ワインの相関マトリックス
     plt.figure(figsize=(12, 10))
     sns.heatmap(white_wine.corr(), annot=True, cmap='viridis', fmt='.2f')
-    plt.title('白ワインの相関マトリックス')
-    plt.savefig(results_dir / 'white_wine_correlation.png', bbox_inches='tight')
+    plt.title('白ワインの相関マトリックス', fontfamily='IPAGothic')
+    plt.savefig(results_dir / 'white_wine_correlation.png', 
+                bbox_inches='tight',
+                pad_inches=0.1)
     plt.close()
 
 def analyze_feature_importance(red_wine: pd.DataFrame, white_wine: pd.DataFrame, results_dir: Path):
@@ -88,18 +100,20 @@ def analyze_feature_importance(red_wine: pd.DataFrame, white_wine: pd.DataFrame,
     
     plt.subplot(1, 2, 1)
     red_correlations[1:].plot(kind='bar')  # quality自身を除外
-    plt.title('赤ワイン: 品質との相関係数')
-    plt.xticks(rotation=45)
-    plt.ylabel('相関係数')
+    plt.title('赤ワイン: 品質との相関係数', fontfamily='IPAGothic')
+    plt.xticks(rotation=45, fontfamily='IPAGothic')
+    plt.ylabel('相関係数', fontfamily='IPAGothic')
     
     plt.subplot(1, 2, 2)
     white_correlations[1:].plot(kind='bar')  # quality自身を除外
-    plt.title('白ワイン: 品質との相関係数')
-    plt.xticks(rotation=45)
-    plt.ylabel('相関係数')
+    plt.title('白ワイン: 品質との相関係数', fontfamily='IPAGothic')
+    plt.xticks(rotation=45, fontfamily='IPAGothic')
+    plt.ylabel('相関係数', fontfamily='IPAGothic')
     
     plt.tight_layout()
-    plt.savefig(results_dir / 'quality_correlations.png', bbox_inches='tight')
+    plt.savefig(results_dir / 'quality_correlations.png', 
+                bbox_inches='tight',
+                pad_inches=0.1)
     plt.close()
 
 def analyze_wine_quality():
